@@ -1,0 +1,105 @@
+<?php
+$title = 'Ajouter un evenement';
+$this->headTitle($title);?>
+
+<h1><?php echo $title;?></h1>
+
+<?php
+
+
+$form = $this->form;
+$form->setAttribute('action', $this->url(
+		'gestevenement',
+		array(
+				'action'     => 'add'
+		)
+));
+$form->prepare();
+
+?>
+<body>
+
+<br/><br/><br/>
+<div class="container">
+  	<h2 style="border-bottom:1px solid #6126AC; width:auto;"><span> Création d'évènement </span></h2>
+  	<h4>Formuluraire de création d'evenement</h4>
+<?php
+//echo $this->formCollection($form);
+echo $this->form()->openTag($form);
+echo $this->formHidden($form->get('id'));
+
+echo '<br>' . '<br>';
+echo "<div <div class='row'><div class='col-md-6'>";
+echo $this->formLabel($form->get('nom'));
+echo $this->formElement($form->get('nom'));
+echo $this->formElementErrors($form->get('nom'));
+echo "</div>";
+echo "<div class='col-md-6'>";
+echo $this->formLabel($form->get('date_evenement'));
+echo $this->formElement($form->get('date_evenement'));
+echo $this->formElementErrors($form->get('date_evenement'));
+echo "</div>";
+echo "</div>";
+echo '<br>' . '<br>';
+echo "<div <div class='row'><div class='col-md-3'>";
+echo $this->formLabel($form->get('adresse'));
+echo $this->formElement($form->get('adresse'));
+echo $this->formElementErrors($form->get('adresse'));
+echo "</div>";
+echo "<div class='col-md-3'>";
+echo $this->formLabel($form->get('code_postal'));
+echo $this->formElement($form->get('code_postal'));
+echo $this->formElementErrors($form->get('code_postal'));
+echo "</div>";
+echo "<div class='col-md-3'>";
+echo $this->formLabel($form->get('ville'));
+echo $this->formElement($form->get('ville'));
+echo $this->formElementErrors($form->get('ville'));
+echo "</div>";
+echo "<div class='col-md-3'>";
+
+echo $this->formLabel($form->get('pays'));
+echo $this->formElement($form->get('pays'));
+echo $this->formElementErrors($form->get('pays'));
+echo "</div>";
+echo "</div>";
+echo '<br>' . '<br>';
+echo "<div class='row'><div class='col-md-4'>";
+echo $this->formLabel($form->get('initiateur_id'));
+echo $this->formElement($form->get('initiateur_id'));
+echo $this->formElementErrors($form->get('initiateur_id'));
+echo "</div>";
+
+echo "<div class='col-md-4'>";
+
+echo $this->formLabel($form->get('destinataire_id'));
+echo $this->formElement($form->get('destinataire_id'));
+echo $this->formElementErrors($form->get('destinataire_id'));
+
+echo "</div>";
+
+echo "<div class='col-md-4'>";
+
+echo $this->formLabel($form->get('membres_id'));
+echo $this->formElement($form->get('membres_id'));
+echo $this->formElementErrors($form->get('membres_id'));
+
+echo "</div>";
+echo "</div>";
+echo '<br>' . '<br>';
+echo "<div class='row'><div class='col-md-6'>";
+echo $this->formLabel($form->get('cadeau_id'));
+echo $this->formElement($form->get('cadeau_id'));
+echo $this->formElementErrors($form->get('cadeau_id'));
+echo "</div>";
+echo "</div>";
+echo '<br>' . '<br>';
+
+
+echo $this->formSubmit($form->get('submit'));
+echo $this->form()->closeTag();
+
+
+?>
+</div>
+</body>

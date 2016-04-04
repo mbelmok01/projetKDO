@@ -1,0 +1,30 @@
+<?php
+  $form = $this->form;
+  $form->setAttribute('action', $this->url(
+      'gestevenement',
+      array(
+          'action' => 'index',
+      )
+  ));
+  $form->prepare();
+  echo $this->form()->openTag($form);
+  
+ ?>
+<body>
+
+<br/><br/><br/><br/><br/><br/>
+<div class="container">
+  	<h2 style="border-bottom:1px solid #6126AC; width:auto;"><span> Participation à l'évènement </span></h2>
+  	<h4>Vous allez de participer a l'evenement</h4>
+  	<?php
+  	      echo "<div <div class='row'>";
+          echo "<div class='col-md-4'><br><label>Somme :</label>";
+  		  echo '<td>'.$this->formRow($form->get('somme_recoltee')).'</td>';
+        echo $this->formHidden($form->get('id'));
+  		  echo '</div>';
+  		  echo '</div>';
+  	?>
+  	<br/><br/><br/>
+  	<a href="<?php echo $this->url('gestevenement', array('action'=>'index'));?>" class="btn btn-primary pull-right">Retour evenement </a>
+</div>
+

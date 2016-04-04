@@ -1,0 +1,78 @@
+<?php
+$title = 'Edit souhait';
+$id_profil = $this->id;
+
+$this->headTitle($title);
+?>
+	<h1>
+		<?php echo $this->escapeHtml($title); ?>
+	</h1>
+
+<div class="container">
+<table class="table-condensed table-responsive table">
+ <tr>
+     <th>Libelle</th>
+     <th>Description</th>
+     <th>Prix</th>
+     <th>Categorie</th>
+     <th></th>
+ </tr>
+ 
+ <?php foreach ($cadeaux as $cadeau) : ?>
+ <tr>
+     <td><?php echo $this->escapeHtml($cadeau->libelle);?></td>
+     <td><?php echo $this->escapeHtml($cadeau->description);?></td>
+     <td><?php echo $this->escapeHtml($cadeau->prix);?></td>
+     <td><?php echo $this->escapeHtml($cadeau->categories_id);?></td>
+     <td>
+     <a href="<?php echo $this->url('gestcadeau', array('action'=>'delete', 'id' => $cadeau->id, 'id2' =>$id_profil));?>">Supprimer</a></td>
+     </tr>
+ <?php endforeach; ?>
+ 
+ </table>
+ 
+ </div>
+
+ 
+ <?php
+$title = 'Nouveau souhait';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+
+<?php
+
+$form = $this->form;
+
+$form->setAttribute('action', $this->url(
+    'gestcadeau',
+    array(
+        'action' => 'add',
+        'id'     => $this->id,
+		'membres_id'=>$id_profil,
+    )
+));
+$form->prepare();
+echo $this->form()->openTag($form);
+echo $this->formRow($form->get('membres_id'));
+?>
+
+<table class="table table-hover">
+	<tr>
+		<th>Libelle</th>
+		<th>Description</th>
+		<th>Prix</th>
+		<th>Categorie</th>
+		<th></th>
+	</tr>
+	<tr>
+		<td><?php echo $this->formRow($form->get('libelle'));?></td>
+		<td><?php echo $this->formRow($form->get('description'));?></td>
+		<td><?php echo $this->formRow($form->get('prix'));?></td>
+		<td><?php echo $this->formRow($form->get('categories_id'));?></td>
+		<td></td>
+	</tr>
+</table>
+<?php
+	echo $this->formSubmit($form->get('submit'));
+	echo $this->form()->closeTag();

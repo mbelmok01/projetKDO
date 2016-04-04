@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>jQuery Mobile</title>
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css" />
+
+        <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
+	</head>
+
+	<script type="text/javascript">
+
+		$.getJSON("http://localhost/public/profils", function(data) {
+			var items = [];
+
+
+			//items.push('<li data-role="list-divider" role="heading">Profils</li>');
+			//items.push('<div data-role="collapsible-set">Profils</div>');
+			
+			// $.each(data, function(key, val) {
+			// 	items.push('<li data-theme="c">' + val.nom + ' ' + val.prenom +  ' ' + val.adresse+ '</li>');
+
+			// });
+
+
+			$.each(data, function(key, val) {
+				items.push('<div data-role="collapsible" data-collapsed="false">'+'<h3>' + val.nom + ' ' + val.prenom + '</h3>'+
+					'<p>'+
+					' Nom : '+ val.nom + '</br>'+
+					' Prenom : '+ val.prenom + '</br>'+
+					' Adresse : '+ val.adresse + '</br>'+
+					' Portable : '+ val.Portable + '</br>'+
+					' Email : '+ val.email + '</br>'+
+					'</p>'+'</div>'
+					);
+			});
+
+
+
+
+			//$('<ul/>', { 'id':'conferences', 'data-inset':'true', html: items.join('')}).appendTo('#result');
+			$('<div/>', { 'id':'profils', 'data-inset':'true', html: items.join('')}).appendTo('#result');
+
+			//$('#profils').listview();
+		});
+		
+
+	</script>
+	<body>
+
+		<div data-role="content" data-dom-cache="true">
+			<div data-role="header">
+			<a href="index.html" data-prefetch data-icon="home" data-transition="pop" data-direction="reverse">Home</a>
+				<h1>Programme</h1>
+			</div>
+
+			<div data-role="collapsible-set" id="result">
+				<!-- <div data-role="collapsible" data-collapsed="false">
+					<h3>9H - Accueil</h3>
+					<p>Les portes de l'IUT de La Rochelle seront ouverts aux inscrits conformés.
+					Pensez au timing, les conférences débuteront à l'heure !</p>
+				</div>
+
+				<div data-role="collapsible">
+					<h3>9H30 - Les applications d'entreprises</h3>
+					<p>I'm the collapsible set content for section 2.</p>
+				</div>
+				<div data-role="collapsible">
+					<h3>10H30 - Le BYOD</h3>
+					<p>I'm the collapsible set content for section 2.</p>
+				</div> -->
+			</div>
+
+
+
+			<div data-role="footer" data-position="fixed">
+				<h4>Pied de page programme</h4>
+			</div>
+		</div>
+
+	</body>
+
+</html>

@@ -1,0 +1,137 @@
+
+
+    <body>
+
+    <br/><br/><br/><br/><br/><br/>
+    	<div class="container">
+    	  	<h2 style="border-bottom:1px solid #6126AC; width:auto;"><span>Mes Evenement(s)  </span></h2>
+
+      <div class="panel-body">
+        <table class="table-condensed table-responsive table">
+        <thead>
+          <tr>
+            <th>Nom evenement</th>
+            <th>Date evenement</th>
+            <th>Etat evenement</th>
+            <th>Prix cadeau</th>
+            <th>Somme recoltee</th>
+            <th>Destinataire</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php
+         foreach ($evenements as $evenement)
+         	{
+         		
+            if($evenement->initiateur_id==2)
+            {
+         			 $url_delete = $this->url('gestevenement', array('action' => 'delete', 'id' => $evenement->id_evenement));
+                $url_update = $this->url('gestevenement', array('action' => 'participer', 'id' => $evenement->id_evenement));
+                $url_ajout = $this->url('gestevenement', array('action' => 'ajout', 'id' => $evenement->id_evenement));
+
+	         		echo "<tr>";
+	         		echo "<td>$evenement->nom_evenement</td>";
+	         		echo "<td>$evenement->date_evenement</td>";
+              echo "<td>$evenement->etat_evenement</td>";
+	         		echo "<td>$evenement->prix_cadeau</td>";
+              echo "<td>$evenement->somme_recoltee</td>";
+	         		echo "<td>$evenement->nom_destinataire</td>";
+             echo '<td><a href='.$url_update.' ><span class="glyphicon glyphicon-euro"></span></a>&nbsp;&nbsp;&nbsp;';
+               echo '<a href='.$url_delete.' ><span class="glyphicon glyphicon-trash"></span></a>&nbsp;&nbsp;&nbsp;';
+	         		echo "<a type='button'  href='#test_modal2' data-toggle='modal' ><span class='glyphicon glyphicon-zoom-in'></span></a>&nbsp;&nbsp;&nbsp;";
+              echo "<a href='#test_modal3' data-toggle='modal'  ><span class='glyphicon glyphicon-user'></span></a>&nbsp;&nbsp;&nbsp;</td>";
+	         		
+	         		echo "</tr>";
+         		} 
+             		
+         	}
+         	
+            ?>
+          </tr>
+        </tbody>
+      </table>
+
+</div>
+      
+        
+         <br/><br/>
+        <a href="<?php echo $this->url('gestevenement', array('action'=>'add', 'id' => 2));?>" class="btn btn-primary pull-right">Nouvel evenement </a>
+        
+        </div>
+<div class="modal fade" id="test_modal2">
+  <div class="modal-header">
+    <a class="close" data-dismiss="modal">&times;</a>
+    <h2 style="border-bottom:1px solid #6126AC; width:auto;"><span> Information Evenement</span></h2>
+    
+  </div>
+  <div class="modal-body">
+    <h3>Detail cadeau : </h3>
+    <div class="row">
+	  <div class="col-md-4"> <img src="<?php echo $this->basePath('img/disque.png');?>" class="img-thumbnail" style="width: 150px; height: 150px;"/></div>
+	  <div class="col-md-8">
+	  <?php 
+           	echo "<b>Nom cadeau :</b> $evenement->nom_cadeau <br/>";
+   			echo "<b>Prix cadeau :</b> $evenement->prix_cadeau Euro(s)<br/>";
+  			echo "<b>Etat ceadeau :</b> $evenement->etat_achat_cadeau <br/>";
+            echo "<b>Description :</b> $evenement->description_cadeau <br/>";
+       ?>
+	  </div>
+	</div>
+<br/> <br/>	<h3>Somme recoltee : </h3><br/>
+  	<?php 
+				echo  "<div class='progress'>
+			  <div class='progress-bar progress-bar-success' role='progressbar' aria-valuenow='10' aria-valuemin='0' aria-valuemax='100' style='width:".$evenement->somme_recoltee."%'>
+			    <span class='sr-only'></span>
+			  </div>
+			</div>";
+			
+	?>
+  </div>
+  
+  <div class="modal-footer">
+
+     <a  name="del" href="#" data-dismiss="modal" class="btn btn-primary">Fermer</a>
+  </div>
+</div>
+
+<div class="modal fade" id="test_modal3">
+  <div class="modal-header">
+    <a class="close" data-dismiss="modal">&times;</a>
+    <h2 style="border-bottom:1px solid #6126AC; width:auto;"><span>Membre(s) invité(s)</span></h2>
+    
+  </div>
+  <div class="modal-body">
+    <h3>Liste des membres invités : </h3>
+    <table class="table-condensed table-responsive table">
+        <thead>
+          <tr>
+            <th>Nom membre</th>
+          </tr>
+        </thead>
+          <tbody>
+          <?php
+         foreach ($evenements3 as $evenement3)
+          {
+            if($evenement3->evenement_id==$evenement->evenement_id && $evenement->membre_id!=1&&$evenement->type_membre == 'Initiateur')
+            {
+            echo "<tr>";
+            echo "<td>$evenement->evenement_id</td>";
+            echo "</tr>";
+            }
+          }
+          ?>
+         </tr>
+        </tbody>
+      </table>
+  </div>
+  
+  <div class="modal-footer">
+       <a  name="del" href="<?php echo $url_ajout; ?>"  class="btn btn-primary">Ajouter</a>
+     <a  name="del" href="#" data-dismiss="modal" class="btn btn-primary">Fermer</a>
+  </div>
+</div>
+    </div> <!-- /container -->
+
+
+  

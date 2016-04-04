@@ -1,0 +1,109 @@
+
+<?php echo $this->doctype(); ?>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <?php echo $this->headTitle(''. $this->translate('Projet KDO'))->setSeparator(' - ')->setAutoEscape(false) ?>
+
+        <?php echo $this->headMeta()
+            ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+            ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+        ?>
+
+        <!-- Le styles -->
+        <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/png', 'href' => $this->basePath() . '/img/tm/icone2.png'))
+                        ->prependStylesheet($this->basePath() . '/css/style.css')
+                        ->prependStylesheet($this->basePath() . '/css/bootstrap.css')
+				        ->prependStylesheet($this->basePath() . '/css/docs.css')
+    				    ->prependStylesheet($this->basePath() . '/css/flexslider.css') 
+            		    ->prependStylesheet($this->basePath() . '/css/responsive.css')?>
+
+        <!-- Scripts -->
+        <?php echo $this->headScript()
+            ->prependFile($this->basePath() . '/js/jquery.ui.totop.js')
+            ->prependFile($this->basePath() . '/js/jquery.flexslider.js')
+            ->prependFile($this->basePath() . '/js/jquery.carouFredSel-6.1.0-packed.js')
+            ->prependFile($this->basePath() . '/js/bootstrap.min.js')
+            ->prependFile($this->basePath() . '/js/jquery.min.js')
+            ->prependFile($this->basePath() . '/js/respond.min.js', 'text/javascript', array('conditional' => 'lt IE 9',))
+            ->prependFile($this->basePath() . '/js/html5shiv.js',   'text/javascript', array('conditional' => 'lt IE 9',))
+             
+        ; ?>
+			
+	    
+    </head>
+    <body>
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="<?php echo $this->url('home') ?>"><img src="<?php echo $this->basePath('img/tm/icone2.png'); ?>" alt="KDO"/>&nbsp;<?php echo $this->translate('Projet KDO') ?></a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="<?php echo $this->url('home') ?>"><?php echo $this->translate('Home') ?></a></li>
+                        <li class="active"><a href="<?php echo $this->url('gestprofil') ?>index"><?php echo $this->translate('Mon profil') ?></a></li>
+                        <li class="active"><a href="<?php echo $this->url('gestevenement') ?>index"><?php echo $this->translate('Mes evenements') ?></a></li>
+                        <li class="active"><a href="<?php echo $this->url('gestevenement') ?>afficherInvitations"><?php echo $this->translate('Mes invitations') ?></a></li>
+                    </ul>
+                      <ul class="nav navbar-nav navbar-right">
+			            <li><a href="#">Deconnexion</a></li>
+			          </ul>
+                </div><!--/.nav-collapse -->
+            </div>
+        </nav>
+            <?php echo $this->content; ?>
+          
+            <!--footer-->
+<footer>
+    <div class="container">
+        <div class="row">
+            <section class="span12 border2">
+                <div class="row">
+                    <article class="span3 info-box">
+                        <h5 class="margBot1"><em>Qui sommes nous</em></h5>
+                        <ul class="list1">
+                            <li><a href="#">L'equipe</a></li>
+                            <li><a href="#">Espace presse</a></li>
+                            <li><a href="#">Blog KDO</a></li>
+                        </ul>
+                    </article>
+                    <article class="span3 info-box">
+                        <h5 class="margBot1"><em>Notre service</em></h5>
+                        <ul class="list1">
+                            <li><a href="#">Comment ca marche ?</a></li>
+                            <li><a href="#">Nous contacter</a></li>
+                            <li><a href="#">Partenaires</a></li>
+                        </ul>
+                    </article>
+                    <article class="span3 info-box">
+                        <h5 class="margBot1"><em>Conditions</em></h5>
+                        <ul class="list1">
+                            <li><a href="#">Mentions legales</a></li>
+                            <li><a href="#">Tarifs</a></li>
+                            <li><a href="#">Plan du site</a></li>
+                        </ul>
+                    </article>
+                    <article class="span3 follow-box"> 
+                        <h5><em>Suivez nous</em></h5>
+                        <ul class="follow_icon">
+                            <li><a href="#"><img src="<?php echo $this->basePath('img/follow_icon1.png');?>" alt=""></a></li>
+                            <li><a href="#"><img src="<?php echo $this->basePath('img/follow_icon2.png');?>" alt=""></a></li>
+                            <li><a href="#"><img src="<?php echo $this->basePath('img/follow_icon3.png');?>" alt=""></a></li>
+                            <li><a href="#"><img src="<?php echo $this->basePath('img/follow_icon4.png');?>" alt=""></a></li>
+                        </ul>
+                    </article>
+                </div>
+            </section>
+        </div>
+        <!-- {%FOOTER_LINK} -->
+    </div>   
+</footer>
+        <?php echo $this->inlineScript() ?>
+    </body>
+</htm>

@@ -1,0 +1,10 @@
+nbproject
+._*
+.~lock.*
+
+.DS_Store
+.idea
+
+.settings
+composer.lock
+

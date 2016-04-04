@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- FontAwesome - http://fortawesome.github.io/Font-Awesome/ -->
+        <link rel="stylesheet" href="../public/mobile/font-awesome.min.css" />
+        <link rel="icon" type="image/png" href="../public/img/tm/icone2.png" />
+
+		<!-- jQueryMobileCSS - original without styling -->
+        <link rel="stylesheet" href="../public/mobile/jquerymobile.css" />
+
+		<!-- nativeDroid core CSS -->
+        <link rel="stylesheet" href="../public/mobile/jquerymobile.nativedroid.css" />
+
+		<!-- nativeDroid: Light/Dark -->
+        <link rel="stylesheet" href="../public/mobile/jquerymobile.nativedroid.light.css"  id='jQMnDTheme' />
+
+       <script src="../public/js/jquery-mobile-min.js"></script>
+       <script src="../public/js/jquery-mobile.js"></script>
+       <script src="../public/js/nativedroid.script.js"></script>
+	</head>
+	<body>
+
+		
+
+<div data-role="page" data-theme='b'>
+
+	<div data-role="panel" id="mypanel" data-theme="b">
+        <ul data-role="listview">
+            <li data-role="list-divider">MENU - KDO</li>
+            <li data-icon="gift"><a href="index.html">Accueil</a></li>
+            <li data-icon="male"><a href="profil.html">Mon profil</a></li>
+            <li data-icon="shopping-cart"><a href="souhait.html">Mes souhaits</a></li>
+            <li data-icon="calendar"><a href="#">Mes invitations</a></li>
+        </ul>
+    </div>
+        <div data-role="header" data-position="fixed" data-tap-toggle="false" data-theme='b'>
+            <a href="#mypanel" data-ajax="false"><i class='icon-ellipsis-vertical'></i></a>
+            <h1>ACCUEIL KDO</h1>
+        </div>
+        
+        <div data-role="content">   
+		
+	       <ul data-nativedroid-plugin='cards'>
+                
+                            
+                <li data-cards-type='text'>
+                    <h1>BIENVENU KDO</h1>
+                    <h2>COMMENT CA MARCHE ?</h2>
+                    <p>Creez gratuitement et en quelques clics votre cagnotte sur KDO. Invitez vos amis a participer. Collectez l'argent des participations en toute securite. Lorsque la cagnotte est terminee, depensez-la selon vos envies chez nos partenaires (c'est gratuit !), en demandant un virement ou en l'offrant directement a son destinataire.</p>
+                </li>
+                <li data-cards-type='publictransport'>
+                    <h1>QUELS SERVICES ?</h1>
+                    <table>
+                        <tr>
+                            <td><img alt="" src="../public/img/birthday.png"></td>
+                            <td>L'anniversaire de votre enfant arrive a grands pas et vous vous creusez la tete... demandez de l'aide a vos proche !</td>
+                        </tr>
+                        <tr>
+                            <td><img alt="" src="../public/img/wedding.png"></td>
+                            <td>Meme si c'est votre plus grosse erreur, essayer au moins d'avoir des cadeaux a partager pour le jour du divorce !</td>
+                        </tr>
+                        <tr>
+                            <td><img alt="" src="../public/img/other.png"></td>
+                            <td>Marre de la France... offrez vous un voyage grace a l'aide de vos amis !</td>
+                        </tr>
+                    </table>
+                </li>
+            </ul>
+	        
+        </div>
+
+    </div>
+    
+    </body>
+</html>

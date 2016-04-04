@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- FontAwesome - http://fortawesome.github.io/Font-Awesome/ -->
+        <link rel="stylesheet" href="../public/mobile/font-awesome.min.css" />
+
+		<!-- jQueryMobileCSS - original without styling -->
+        <link rel="stylesheet" href="../public/mobile/jquerymobile.css" />
+
+		<!-- nativeDroid core CSS -->
+        <link rel="stylesheet" href="../public/mobile/jquerymobile.nativedroid.css" />
+<link rel="icon" type="image/png" href="../public/img/tm/icone2.png" />
+		<!-- nativeDroid: Light/Dark -->
+        <link rel="stylesheet" href="../public/mobile/jquerymobile.nativedroid.light.css"  id='jQMnDTheme' />
+
+        <script src="../public/js/jquery-mobile-min.js"></script>
+       <script src="../public/js/jquery-mobile.js"></script>
+	</head>
+	
+
+	<script type="text/javascript">
+
+		$.getJSON("http://localhost/projetKDO_final/public/profil-rest/1", function(data) {
+
+			$("#result").append( '<div data-role="collapsible" data-collapsed="false">'+
+				'<h3>' + data.nom + ' ' + data.prenom + '</h3>'+
+				'<p>'+' Nom : '+ data.nom + '</br>'+
+				' Prenom : '+ data.prenom + '</br>'+
+				' Adresse : '+ data.adresse + '</br>'+
+				' Portable : '+ data.Portable + '</br>'+
+				' Email : '+ data.email + '</br>'+
+				' Presentation : '+ data.presentation + '</br>'+
+				'</p>'+'</div>' );
+		});
+	</script>
+	
+	<div data-role="page" data-theme='b'>
+
+	<div data-role="panel" id="mypanel" data-theme="b">
+        <ul data-role="listview">
+            <li data-role="list-divider">MENU - KDO</li>
+            <li data-icon="gift"><a href="index.html">Accueil</a></li>
+            <li data-icon="male"><a href="profil.html">Mon profil</a></li>
+            <li data-icon="shopping-cart"><a href="souhait.html">Mes souhaits</a></li>
+            <li data-icon="calendar"><a href="#">Mes invitations</a></li>
+        </ul>
+    </div>
+        <div data-role="header" data-position="fixed" data-tap-toggle="false" data-theme='b'>
+            <a href="#mypanel" data-ajax="false"><i class='icon-ellipsis-vertical'></i></a>
+            <h1>MON PROFIL</h1>
+        </div>
+        
+        <div data-role="content">   
+		
+	       
+	        
+        </div>
+
+    </div>
+    
+    </body>
+</html>

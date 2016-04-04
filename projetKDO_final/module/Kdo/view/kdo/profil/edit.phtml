@@ -1,0 +1,54 @@
+<?php
+// module/Kdo/view/kdo/profil/edit.phtml:
+
+$title = 'Edit profil';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+
+<?php
+
+$form = $this->form;
+
+$form->setAttribute('action', $this->url(
+    'gestprofil',
+    array(
+        'action' => 'edit',
+        'id'     => $this->id,
+    )
+));
+$form->prepare();
+//echo "id dans la vue $this->id";
+echo "<br>";
+echo $this->form()->openTag($form);
+echo "<br>";
+echo $this->formHidden($form->get('id'));
+echo "<br>";
+echo "<label>Nom :</label>";
+echo $this->formRow($form->get('nom'));
+echo "<br><label>Prenom :</label>";
+echo $this->formRow($form->get('prenom'));
+echo "<br><label>Adresse :</label> ";
+echo $this->formRow($form->get('adresse'));
+echo "<br><label>Complement adresse :</label> ";
+echo $this->formRow($form->get('complement_adresse'));
+echo "<br><label>Code postal :</label> ";
+echo $this->formRow($form->get('code_postal'));
+echo "<br><label>Ville :</label> ";
+echo $this->formRow($form->get('ville'));
+echo "<br><label>Pays :</label> ";
+echo $this->formRow($form->get('pays'));
+echo "<br><label>Telephone :</label> ";
+echo $this->formRow($form->get('telephone'));
+echo "<br><label>Portable :</label> ";
+echo $this->formRow($form->get('portable'));
+echo "<br><label>Email :</label> ";
+echo $this->formRow($form->get('email'));
+echo "<br><label>Date de naissance:</label> ";
+echo $this->formRow($form->get('date_naissance'));
+echo "<br><label>Presentation :</label> ";
+echo $this->formRow($form->get('presentation'));
+echo "<br>";
+echo $this->formSubmit($form->get('submit'));
+echo $this->form()->closeTag();
+

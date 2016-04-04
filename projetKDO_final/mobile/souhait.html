@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- FontAwesome - http://fortawesome.github.io/Font-Awesome/ -->
+        <link rel="stylesheet" href="../public/mobile/font-awesome.min.css" />
+<link rel="icon" type="image/png" href="../public/img/tm/icone2.png" />
+		<!-- jQueryMobileCSS - original without styling -->
+        <link rel="stylesheet" href="../public/mobile/jquerymobile.css" />
+
+		<!-- nativeDroid core CSS -->
+        <link rel="stylesheet" href="../public/mobile/jquerymobile.nativedroid.css" />
+
+		<!-- nativeDroid: Light/Dark -->
+        <link rel="stylesheet" href="../public/mobile/jquerymobile.nativedroid.light.css"  id='jQMnDTheme' />
+		<script src="../public/js/jquery-mobile-min.js"></script>
+       <script src="../public/js/jquery-mobile.js"></script>
+	</head>
+	<body>
+
+		
+		<div data-role="page" data-theme='b'>
+			<div data-role="panel" id="mypanel" data-theme="b">
+        <ul data-role="listview">
+            <li data-role="list-divider">MENU - KDO</li>
+            <li data-icon="gift"><a href="index.html">Accueil</a></li>
+            <li data-icon="male"><a href="profil.html">Mon profil</a></li>
+            <li data-icon="shopping-cart"><a href="souhait.html">Mes souhaits</a></li>
+            <li data-icon="calendar"><a href="#">Mes invitations</a></li>
+        </ul>
+    </div>
+        <div data-role="header" data-position="fixed" data-tap-toggle="false" data-theme='b'>
+            <a href="#mypanel" data-ajax="false"><i class='icon-ellipsis-vertical'></i></a>
+            <h1>MES SOUHAITS</h1>
+        </div>
+        
+        <div data-role="content">   
+		
+	       <a href='newSouhait.html'  data-role='button' >Nouveau souhait</a>
+	        
+        </div>
+		</div> 
+	</body>
+
+	<script type="text/javascript">
+
+	$(function(){
+		var id = 2;
+		$.getJSON("http://localhost/projetKDO_final/public/souhait-rest/"+id, function(data) {
+
+			//console.log(data);
+
+			var items = [];
+			
+			$.each(data, function(key, val) {
+				
+				items.push(
+					'<div data-role="collapsible">'+
+						'<h3>' + val.libelle + '</h3>' +
+						'<p>' +
+							'<ul> Prix : '+ val.prix+'</ul>'+
+							// '<ul> Importance : '+ val.importance+'</ul>'+
+							'<ul> Description : '+ val.description+'</ul>'+
+						'</p>'+
+						'<button id="'+val.libelle.replace(/ /g,'')+'">supprimer</button>'+
+					'</div>'
+				);
+
+				$("body").on( "click", '#'+val.libelle.replace(/ /g,'')+'', function() {
+
+					console.log(" click sur le bouton #"+val.libelle.replace(/ /g,''));
+					$.ajax({
+						url : "http://localhost/Projet_KDO/public/souhait-rest/"+val.id,
+						dataType : "text/json",
+						type : 'DELETE'
+					}).done(function(data) {
+						console.log("Le souhait a bien été supprimé");
+					});
+
+					//window.location.reload();
+
+				}); // fin de l'écoute sur le bouton
+			});
+
+			$('<ul/>', { 'id':'conferences', 'data-inset':'true',
+				html: items.join('') }).appendTo('#result');
+
+		}); // fin du getJSON
+	});
+</script>
+</html>
